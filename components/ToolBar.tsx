@@ -9,6 +9,10 @@ const options = [
 ];
 
 const ToolBar: React.FC<Props> = () => {
+    const handleDragStart = React.useCallback<React.DragEventHandler<HTMLButtonElement>>((event) => {
+        
+    }, []);
+
     return (
         <div style={{
             display: 'flex',
@@ -20,7 +24,14 @@ const ToolBar: React.FC<Props> = () => {
             padding: '1em'
         }}>
             {options.map(({ name }, index) => (
-                <button key={index}>
+                <button key={index}
+                    draggable
+                    style={{
+                        cursor: 'pointer',
+                    }}
+
+                    onDragStart={handleDragStart}
+                >
                     {name}
                 </button>
             ))}
